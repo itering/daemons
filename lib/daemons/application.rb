@@ -217,12 +217,12 @@ module Daemons
       end
 
       # Now we really start the script...
-      $DAEMONS_ARGV = @controller_argv
-      ENV['DAEMONS_ARGV'] = @controller_argv.join(' ')
+      # $DAEMONS_ARGV = @controller_argv
+      # ENV['DAEMONS_ARGV'] = @controller_argv.join(' ')
 
       ARGV.clear
       ARGV.concat @app_argv if @app_argv
-
+      ARGV.concat @controller_argv.to_a if @controller_argv
       started
       # TODO: exception logging
       load script
